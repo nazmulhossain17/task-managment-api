@@ -8,7 +8,19 @@ const { port } = require("./config");
 
 const app = express();
 
-app.use(cors());
+// Define CORS options
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  credentials: true,
+};
+
+// Apply CORS middleware with defined options
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Enable pre-flight
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use("/api/auth", authRouter);
@@ -17,6 +29,7 @@ app.use("/api/task", taskRouter);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
 app.listen(port, () => {
-  console.log(`server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
