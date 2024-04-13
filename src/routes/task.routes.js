@@ -6,6 +6,7 @@ const {
   getSingleTask,
   updateTask,
   deleteTask,
+  markTaskAsCompleted,
 } = require("../controller/task-controller");
 
 const updateSchema = require("../controller/task-validation");
@@ -23,5 +24,6 @@ router.get("/user/:userId/tasks", getAllTask);
 router.get("/user/:userId/tasks/:taskId", getSingleTask);
 router.put("/user/:userId/tasks/:taskId", validateUpdate, updateTask);
 router.delete("/user/:userId/tasks/:taskId", deleteTask);
+router.put("/:userId/tasks/:taskId/complete", markTaskAsCompleted);
 
 module.exports = router;

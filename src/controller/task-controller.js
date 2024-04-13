@@ -84,10 +84,24 @@ const deleteTask = async (req, res) => {
   }
 };
 
+const markTaskAsCompleted = async (req, res) => {
+  try {
+    const { userId, taskId } = req.params;
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: { completed: true },
+    });
+    res.status(200).json(updatedTask);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createTask,
   getAllTask,
   getSingleTask,
   updateTask,
   deleteTask,
+  markTaskAsCompleted,
 };

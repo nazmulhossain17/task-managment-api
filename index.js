@@ -17,9 +17,8 @@ const corsOptions = {
   credentials: true,
 };
 
-// Apply CORS middleware with defined options
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Enable pre-flight
+app.options("*", cors(corsOptions));
 
 app.use(cookieParser());
 app.use(bodyParser.json());

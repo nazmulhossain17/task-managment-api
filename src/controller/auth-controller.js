@@ -30,7 +30,7 @@ const handleRegister = async (req, res) => {
       data: {
         name,
         email,
-        password: hashedPassword, // Ensure password is not null
+        password: hashedPassword,
       },
     });
     return res.status(201).json({
@@ -103,9 +103,9 @@ const handleLogin = async (req, res) => {
 const handleLogout = async (req, res) => {
   try {
     res.clearCookie("access_token");
-    res.status(200).send("Logout successful"); // Use res.send to send the response
+    res.status(200).send("Logout successful");
   } catch (error) {
-    res.status(500).send(error.message); // Use res.send to send the error message
+    res.status(500).send(error.message);
   }
 };
 
