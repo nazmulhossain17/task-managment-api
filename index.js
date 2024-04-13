@@ -10,7 +10,7 @@ const app = express();
 
 // Define CORS options
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://task-managment-app-e9404.web.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204,
